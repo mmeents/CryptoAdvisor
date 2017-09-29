@@ -1,0 +1,80 @@
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.csprojResolveAssemblyReference.cache
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.Form1.resources
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.Properties.Resources.resources
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.csproj.GenerateResource.Cache
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.exe.config
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.exe
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.pdb
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\C0DEC0RE.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\PoloniexApi.Net.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Json.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.Default.Client.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Core.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\Castle.Core.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Interfaces.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Linq.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Collections.Immutable.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Interactive.Async.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftMsgpack.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftJson.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.WebSocket4Net.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Msgpack.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WebSocket4Net.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\MsgPack.dll
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\C0DEC0RE.pdb
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\PoloniexApi.Net.pdb
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Json.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.Default.Client.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Core.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\Castle.Core.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Interfaces.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Linq.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Collections.Immutable.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\System.Interactive.Async.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftMsgpack.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftJson.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.WebSocket4Net.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\bin\Debug\MsgPack.xml
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.exe
+C:\MMREF\Investor\Proto\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.pdb
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.exe.config
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.exe
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.pdb
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.exe
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\TestTradeHistory.pdb
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Json.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.Default.Client.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Core.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\Castle.Core.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Interfaces.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Linq.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Collections.Immutable.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Interactive.Async.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftMsgpack.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftJson.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.WebSocket4Net.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Msgpack.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WebSocket4Net.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\MsgPack.dll
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\C0DEC0RE.pdb
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\PoloniexApi.Net.pdb
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\Newtonsoft.Json.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.Default.Client.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Core.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\Castle.Core.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Interfaces.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Reactive.Linq.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Collections.Immutable.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\System.Interactive.Async.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftMsgpack.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.NewtonsoftJson.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\WampSharp.WebSocket4Net.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\bin\Debug\MsgPack.xml
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.csprojResolveAssemblyReference.cache
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.Form1.resources
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.Properties.Resources.resources
+C:\A Projects\Advisor\Advisor\Test\TestTradeHistory\obj\Debug\TestTradeHistory.csproj.GenerateResource.Cache
