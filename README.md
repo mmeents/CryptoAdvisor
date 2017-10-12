@@ -1,5 +1,5 @@
 # CryptoAdvisor
-Alt-Coin Crypto Trader on Poloniex Application
+Alt-Coin Crypto Trader on Poloniex Application  https://github.com/mmeents/CryptoAdvisor/blob/master/Install/MakeInstall/MakeInstall-SetupFiles/MakeInstall.msi is the install.
 
 Utilizes https://github.com/kripod/PoloniexApi.Net for communication with Poloniex Exchange.
 
