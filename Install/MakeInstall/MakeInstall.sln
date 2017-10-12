@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "MakeInstall", "MakeInstall.aiproj", "{229F1304-C6EC-4E2B-A331-5248629F306F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DefaultBuild|Default = DefaultBuild|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{229F1304-C6EC-4E2B-A331-5248629F306F}.DefaultBuild|Default.ActiveCfg = DefaultBuild
+		{229F1304-C6EC-4E2B-A331-5248629F306F}.DefaultBuild|Default.Build.0 = DefaultBuild
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF7E7DDC-459F-4778-A3BC-2A9971E44EE9}
+	EndGlobalSection
+EndGlobal
