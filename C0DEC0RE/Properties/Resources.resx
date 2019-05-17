@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BuilderHasNoStrategies" xml:space="preserve">
+    <value>Object builder has no strategies.</value>
+  </data>
+  <data name="BuilderStrategyTraceBuildUp" xml:space="preserve">
+    <value>[{0}] {1} / {2} :: {3}</value>
+  </data>
+  <data name="BuilderStrategyTraceTearDown" xml:space="preserve">
+    <value>[{0}] {1} :: {2}</value>
+  </data>
+  <data name="BuildUpFinished" xml:space="preserve">
+    <value>[BuilderBase] Finished BuildUp on {0} with ID {1}</value>
+  </data>
+  <data name="BuildUpStarting" xml:space="preserve">
+    <value>[BuilderBase] Starting BuildUp on {0} with ID {1}</value>
+  </data>
+  <data name="CallingConstructor" xml:space="preserve">
+    <value>Calling constructor({0})</value>
+  </data>
+  <data name="CallingMethod" xml:space="preserve">
+    <value>Calling method {0}({1})</value>
+  </data>
+  <data name="CallingOnBuiltUp" xml:space="preserve">
+    <value>Calling IBuilderAware.OnBuiltUp()</value>
+  </data>
+  <data name="CallingOnTearingDown" xml:space="preserve">
+    <value>Calling IBuilderAware.OnTearingDown()</value>
+  </data>
+  <data name="CallingProperty" xml:space="preserve">
+    <value>Setting property {0}({1})</value>
+  </data>
+  <data name="CannotCreateInstanceOfType" xml:space="preserve">
+    <value>Can not create an instance of type '{0}'.</value>
+  </data>
+  <data name="CannotInjectReadOnlyProperty" xml:space="preserve">
+    <value>In class '{0}', cannot inject value on property '{1}' because it is read-only.</value>
+  </data>
+  <data name="DependencyMissing" xml:space="preserve">
+    <value>Could not locate dependency "{0}".</value>
+  </data>
+  <data name="InvalidAttributeCombination" xml:space="preserve">
+    <value>Too many dependency injection attributes defined on {0}.{1}.</value>
+  </data>
+  <data name="InvalidEnumerationValue" xml:space="preserve">
+    <value>Invalid enumeration value.</value>
+  </data>
+  <data name="KeyAlreadyPresentInDictionary" xml:space="preserve">
+    <value>An item with the given key is already present in the dictionary.</value>
+  </data>
+  <data name="MissingPolicyNamed" xml:space="preserve">
+    <value>Missing policy to build {0} named '{1}'.</value>
+  </data>
+  <data name="MissingPolicyUnnamed" xml:space="preserve">
+    <value>Missing policy to build unnamed {0}.</value>
+  </data>
+  <data name="NoAppropriateConstructor" xml:space="preserve">
+    <value>Could not find an appropriately matching constructor.</value>
+  </data>
+  <data name="SingletonRegistered" xml:space="preserve">
+    <value>Registered as singleton</value>
+  </data>
+  <data name="SingletonReturned" xml:space="preserve">
+    <value>Returning existing singleton</value>
+  </data>
+  <data name="TearDownFinished" xml:space="preserve">
+    <value>[BuilderBase] Finished TearDown on {0}</value>
+  </data>
+  <data name="TearDownStarting" xml:space="preserve">
+    <value>[BuilderBase] Starting TearDown on {0}</value>
+  </data>
+  <data name="TypeMapped" xml:space="preserve">
+    <value>Mapped to {0} / {1}</value>
+  </data>
+  <data name="TypeNotCompatible" xml:space="preserve">
+    <value>While resolving dependencies for {2}, the provided type {1} is not compatible with {0}.</value>
+  </data>
+  <data name="ExceptionConfigurationObjectIsNotCustomProviderData" xml:space="preserve">
+    <value>The configuration object for type '{0}' with name '{1}' has type '{2}' which is does not implement ICustomProviderData.</value>
+  </data>
+  <data name="ExceptionCanNotConvertType" xml:space="preserve">
+    <value>The AssemblyQualifiedTypeNameConverter can only convert values of type '{0}'.</value>
+  </data>
+  <data name="ExceptionConfigurationObjectWithTypeDoesNotHaveTypeSet" xml:space="preserve">
+    <value>The concrete type for polymorphic object named '{1}' in hierarchy {2} is not defined in configuration object {0}.</value>
+  </data>
+  <data name="ExceptionEventRaisingFailed" xml:space="preserve">
+    <value>There was an error raising an event in </value>
+  </data>
+  <data name="ExceptionFactoryMethodHasInvalidReturnType" xml:space="preserve">
+    <value>The method with signature {0} is not a valid factory method to build type {1}.</value>
+  </data>
+  <data name="ExceptionInvalidType" xml:space="preserve">
+    <value>The type '{0}' cannot be resolved. Please verify the spelling is correct or that the full type name is provided.</value>
+  </data>
+  <data name="ExceptionNamedConfigurationNotFound" xml:space="preserve">
+    <value>The configuration could not be found for name '{0}' in factory {1}.</value>
+  </data>
+  <data name="ExceptionNoMethodAnnotatedForInjectionFound" xml:space="preserve">
+    <value>The type {0} does not have a public method annotated as an injection target as required by the use of injection.</value>
+  </data>
+  <data name="ExceptionNoConfigurationElementAttribute" xml:space="preserve">
+    <value>The type {0} does not contain the ConfigurationElementTypeAttribute.</value>
+  </data>
+  <data name="ExceptionNoSuitableFactoryMethodFound" xml:space="preserve">
+    <value>The type {0} does not have a static method with a TargetConstructorAttribuite suitable to create an object of type {1}.</value>
+  </data>
+  <data name="ExceptionNoTypeAttribute" xml:space="preserve">
+    <value>The type attribute does not exist on the element {0}.</value>
+  </data>
+  <data name="ExceptionParameterNotAnnotatedForInjection" xml:space="preserve">
+    <value>The parameter '{0}' for injection target '{1}' in type '{2}' is missing the injection interpretation attribute.</value>
+  </data>
+  <data name="ExceptionPropertyNotFound" xml:space="preserve">
+    <value>e {2}.</value>
+  </data>
+  <data name="ExceptionRetrievalAttributeNotFound" xml:space="preserve">
+    <value>The type {0} does not contain the ConfigurationDataRetrievalAttribute required to resolve named references.</value>
+  </data>
+  <data name="ExceptionSourcePropertyDoesNotExist" xml:space="preserve">
+    <value>Could not retrieve parameter value. The property {0} does not exist for type {1}.</value>
+  </data>
+  <data name="ExceptionStringNullOrEmpty" xml:space="preserve">
+    <value>The value can not be null or string or empty.</value>
+  </data>
+  <data name="ExceptionTypeCouldNotBeCreated" xml:space="preserve">
+    <value>The type {0} from configuration could not be created.</value>
+  </data>
+  <data name="ExceptionTypeNotNameMapper" xml:space="preserve">
+    <value>Type {0} is not an implementation of IConfigurationNameMapper for ConfigurationNameMapperAttribute.</value>
+  </data>
+  <data name="ExceptionTypeNotRetriever" xml:space="preserve">
+    <value>Type {0} is not an implementation of IConfigurationDataRetriever for ConfigurationDataRetrievalAttribute.</value>
+  </data>
+  <data name="ExceptionConfigurationFileNotFound" xml:space="preserve">
+    <value>The section {0} could not be saved because the file does not exist.</value>
+  </data>
+  <data name="ExceptionPerformanceCounterRedefined" xml:space="preserve">
+    <value>The performance counter '{0}' in category '{1}' is redefined in type {2} with a different configuration.</value>
+  </data>
+  <data name="ExceptionConfigurationLoadFileNotFound" xml:space="preserve">
+    <value>The configuration file {0} could not be found.</value>
+  </data>
+  <data name="ExceptionUnexpectedType" xml:space="preserve">
+    <value>The expected type '{0}' was not provided.</value>
+  </data>
+  <data name="ExceptionArgumentShouldDeriveFromIList" xml:space="preserve">
+    <value>The type '{0}' does not derive from IList.</value>
+  </data>
+  <data name="ExceptionArgumentShouldDeriveFromIDictionary" xml:space="preserve">
+    <value>The type '{0}' does not derive from IDictionary.</value>
+  </data>
+  <data name="ExceptionAssemblerAttributeNotSet" xml:space="preserve">
+    <value>The [Assembler] attribute is not set in the configuration object type {0}.</value>
+  </data>
+  <data name="ExceptionBaseConfigurationSourceElementIsInvalid" xml:space="preserve">
+    <value>The base ConfigurationSourceElement configuration type can not be used as a concrete configuration element.</value>
+  </data>
+  <data name="ExceptionSystemSourceNotDefined" xml:space="preserve">
+    <value>The system configuration source is not defined in the configuration file.</value>
+  </data>
+  <data name="ExceptionAssemblerTypeNotCompatible" xml:space="preserve">
+    <value>The assembler configured for type {0} has type {2} which is not compatible with type {1}.</value>
+  </data>
+  <data name="ExceptionCustomFactoryAttributeNotFound" xml:space="preserve">
+    <value>The [CustomFactory] attribute was not found on type {0} while processing request for id '{1}'.</value>
+  </data>
+  <data name="FileConfigurationSourceName" xml:space="preserve">
+    <value>File Configuration Source</value>
+  </data>
+  <data name="SystemConfigurationSourceName" xml:space="preserve">
+    <value>System Configuration Source</value>
+  </data>
+  <data name="ExceptionTypeNotCustomFactory" xml:space="preserve">
+    <value>Type {0} is not an implementation of ICustomFactory for CustomFactoryAttribute.</value>
+  </data>
+  <data name="EventLogEntryHeaderTemplate" xml:space="preserve">
+    <value>An error occurred in application {0} in the {1}.</value>
+  </data>
+  <data name="EventLogEntryExceptionTemplate" xml:space="preserve">
+    <value>The exception that occured was: {0}</value>
+  </data>
+  <data name="ExceptionConfigurationSourceSectionNotFound" xml:space="preserve">
+    <value>The configuration source section is not found in the application configuration file.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User id,uid</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password,pwd</value>
+  </data>
+  <data name="ExceptionTableNameArrayEmpty" xml:space="preserve">
+    <value>The table name array used to map results to user-specified table names cannot be empty.</value>
+  </data>
+  <data name="ExceptionMessageUpdateDataSetArgumentFailure" xml:space="preserve">
+    <value>At least one command must be initialized</value>
+  </data>
+  <data name="ExceptionMessageUpdateDataSetRowFailure" xml:space="preserve">
+    <value>Failed to update row </value>
+  </data>
+  <data name="ExceptionMessageParameterMatchFailure" xml:space="preserve">
+    <value>The number of parameters does not match number of values for stored procedure.</value>
+  </data>
+  <data name="ExceptionNoDatabaseDefined" xml:space="preserve">
+    <value>The requested database {0} is not defined in configuration.</value>
+  </data>
+  <data name="ExceptionNullOrEmptyString" xml:space="preserve">
+    <value>The value can not be null or an empty string.</value>
+  </data>
+  <data name="ExceptionCommandNotSqlCommand" xml:space="preserve">
+    <value>The command must be a SqlCommand.</value>
+  </data>
+  <data name="ExceptionNoProviderDefinedForConnectionString" xml:space="preserve">
+    <value>The requested database {0} does not have provider name set in the connection string.</value>
+  </data>
+  <data name="CounterCategoryHelpResourceName" xml:space="preserve">
+    <value>Enterprise Library Data Performance Counter Instances</value>
+  </data>
+  <data name="ExceptionParameterDiscoveryNotSupportedOnGenericDatabase" xml:space="preserve">
+    <value>Parameter discovery is not supported for connections using GenericDatabase. You must specify the parameters explicitly, or configure the connection to use a type deriving from Database that supports parameter discovery.</value>
+  </data>
+  <data name="ExceptionDatabaseTypeDoesNotHaveRequiredConfigurationTypeAttribute" xml:space="preserve">
+    <value>The database type {0} does not have the required ConfigurationElementType attribute.</value>
+  </data>
+  <data name="ExceptionDatabaseTypeDoesNotHaveAssemblerAttribute" xml:space="preserve">
+    <value>The database type {0} for the name {1} does not have the required [DatabaseAssembler] attribute required to build the database object.</value>
+  </data>
+  <data name="ConfigurationFailureCreatingDatabase" xml:space="preserve">
+    <value>A configuration failure occurred while creating database ‘{0}’.</value>
+  </data>
+  <data name="ExceptionTypeNotDatabaseAssembler" xml:space="preserve">
+    <value>Type {0} is not an implementation of IDatabaseAssembler for DatabaseAssemblerAttribute.</value>
+  </data>
+  <data name="BlockName" xml:space="preserve">
+    <value>Enterprise Library Data Access Application Block</value>
+  </data>
+  <data name="ErrorConnectionFailedExtraInformation" xml:space="preserve">
+    <value>The connection string used was "{0}".</value>
+  </data>
+  <data name="ErrorConnectionFailedMessage" xml:space="preserve">
+    <value>The error occurred using the "{0}" database instance while attempting to open the database connection.</value>
+  </data>
+  <data name="CommandExecutedCounterHelpResource" xml:space="preserve">
+    <value>Commands Executed/sec is the rate at which database commands were executed.</value>
+  </data>
+  <data name="CommandFailedCounterHelpResource" xml:space="preserve">
+    <value>Commands Failed/sec is tha rate at which database commands failed to execute.</value>
+  </data>
+  <data name="ConnectionFailedCounterHelpResource" xml:space="preserve">
+    <value>Connections Failed/sec is the rate at which database connections failed to open.</value>
+  </data>
+  <data name="ConnectionOpenedCounterHelpResource" xml:space="preserve">
+    <value>Connections Opened/sec is the rate at which database connections were opened.</value>
+  </data>
+</root>

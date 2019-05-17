@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B4A1797-BB72-4316-A06E-F70E709A2DD0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>C0DEC0RE</RootNamespace>
+    <AssemblyName>C0DEC0RE</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractInstallerBuilder.cs" />
+    <Compile Include="AppDomainNameFormatter.cs" />
+    <Compile Include="AssemblerAttribute.cs" />
+    <Compile Include="AssemblerBasedCustomFactory.cs" />
+    <Compile Include="AssemblerBasedObjectFactory.cs" />
+    <Compile Include="AssemblyQualifiedTypeNameConverter.cs" />
+    <Compile Include="BaseFileConfigurationSourceImplementation.cs" />
+    <Compile Include="BaseWmiEvent.cs" />
+    <Compile Include="builder.cs" />
+    <Compile Include="BuilderAwareStrategy.cs" />
+    <Compile Include="BuilderBase.cs" />
+    <Compile Include="BuilderContext.cs" />
+    <Compile Include="BuilderPolicyKey.cs" />
+    <Compile Include="BuilderStage.cs" />
+    <Compile Include="BuilderStrategy.cs" />
+    <Compile Include="BuilderStrategyChain.cs" />
+    <Compile Include="BuilderTraceSourcePolicy.cs" />
+    <Compile Include="ByteArrayTypeConverter.cs" />
+    <Compile Include="CachingMechanism.cs" />
+    <Compile Include="cClass.cs" />
+    <Compile Include="CloneParameter.cs" />
+    <Compile Include="CommandExecutedEventArgs.cs" />
+    <Compile Include="CommandFailedEvent.cs" />
+    <Compile Include="CommandFailedEventArgs.cs" />
+    <Compile Include="CommonWmiInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommonWmiInstaller.Designer.cs">
+      <DependentUpon>CommonWmiInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationChangedEventArgs.cs" />
+    <Compile Include="ConfigurationChangeFileWatcher.cs" />
+    <Compile Include="ConfigurationChangeWatcher.cs" />
+    <Compile Include="ConfigurationChangeWatcherPauser.cs" />
+    <Compile Include="ConfigurationChangingEventArgs.cs" />
+    <Compile Include="ConfigurationElementTypeAttribute.cs" />
+    <Compile Include="ConfigurationFileChangedEventArgs.cs" />
+    <Compile Include="ConfigurationFileChangingEventArgs.cs" />
+    <Compile Include="ConfigurationFileSourceWatcher.cs" />
+    <Compile Include="ConfigurationNameMapperAttribute.cs" />
+    <Compile Include="ConfigurationNameMappingStrategy.cs" />
+    <Compile Include="ConfigurationNameProvider.cs" />
+    <Compile Include="ConfigurationObjectPolicy.cs" />
+    <Compile Include="ConfigurationReflectionCache.cs" />
+    <Compile Include="ConfigurationSourceElement.cs" />
+    <Compile Include="ConfigurationSourceFactory.cs" />
+    <Compile Include="ConfigurationSourceSection.cs" />
+    <Compile Include="ConfigurationSourceWatcher.cs" />
+    <Compile Include="ConfiguredObjectStrategy.cs" />
+    <Compile Include="ConnectionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionDetail.Designer.cs">
+      <DependentUpon>ConnectionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionFailedEvent.cs" />
+    <Compile Include="ConnectionFailedEventArgs.cs" />
+    <Compile Include="ConnectionString.cs" />
+    <Compile Include="ConstructorPolicy.cs" />
+    <Compile Include="ConstructorReflectionStrategy.cs" />
+    <Compile Include="CreateNewAttribute.cs" />
+    <Compile Include="CreationParameter.cs" />
+    <Compile Include="CreationStrategy.cs" />
+    <Compile Include="CustomFactoryAttribute.cs" />
+    <Compile Include="CustomProviderAssembler.cs" />
+    <Compile Include="CustomProviderDataHelper.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DatabaseAssemblerAttribute.cs" />
+    <Compile Include="DatabaseConfigurationView.cs" />
+    <Compile Include="DatabaseCustomFactory.cs" />
+    <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="DatabaseMapper.cs" />
+    <Compile Include="DatabaseProviderFactory.cs" />
+    <Compile Include="DatabaseSettings.cs" />
+    <Compile Include="DataConfigurationFailureEvent.cs" />
+    <Compile Include="DataEvent.cs" />
+    <Compile Include="DataInstrumentationInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataInstrumentationInstaller.Designer.cs">
+      <DependentUpon>DataInstrumentationInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataInstrumentationListener.cs" />
+    <Compile Include="DataInstrumentationListenerBuilder.cs" />
+    <Compile Include="DataInstrumentationProvider.cs" />
+    <Compile Include="DbProviderMapping.cs" />
+    <Compile Include="DefaultCreationPolicy.cs" />
+    <Compile Include="DefaultDataEventLogger.cs" />
+    <Compile Include="DefaultDataEventLoggerCustomFactory.cs" />
+    <Compile Include="DefaultEventLoggerCustomFactoryBase.cs" />
+    <Compile Include="DependencyAttribute.cs" />
+    <Compile Include="DependencyMissingException.cs" />
+    <Compile Include="DependencyParameter.cs" />
+    <Compile Include="DependencyResolutionLocatorKey.cs" />
+    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="DictionaryConfigurationSource.cs" />
+    <Compile Include="EnterpriseLibraryBuilderStrategy.cs" />
+    <Compile Include="EnterpriseLibraryFactory.cs" />
+    <Compile Include="EnterpriseLibraryPerformanceCounter.cs" />
+    <Compile Include="EnterpriseLibraryPerformanceCounterFactory.cs" />
+    <Compile Include="EventBinder.cs" />
+    <Compile Include="EventLogDefinitionAttribute.cs" />
+    <Compile Include="EventLogEntryFormatter.cs" />
+    <Compile Include="EventLogInstallerBuilder.cs" />
+    <Compile Include="ExplicitInstrumentationAttacher.cs" />
+    <Compile Include="FileConfigurationSaveParameter.cs" />
+    <Compile Include="FileConfigurationSource.cs" />
+    <Compile Include="FileConfigurationSourceElement.cs" />
+    <Compile Include="FileConfigurationSourceImplementation.cs" />
+    <Compile Include="GenericDatabase.cs" />
+    <Compile Include="GenericDatabaseAssembler.cs" />
+    <Compile Include="GenericEnumeratorWrapper.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="HasInstallableResourcesAttribute.cs" />
+    <Compile Include="IAssembler.cs" />
+    <Compile Include="ibuilder.cs" />
+    <Compile Include="IBuilderAware.cs" />
+    <Compile Include="IBuilderConfigurator.cs" />
+    <Compile Include="ibuildercontext.cs" />
+    <Compile Include="IBuilderPolicy.cs" />
+    <Compile Include="IBuilderStrategy.cs" />
+    <Compile Include="IBuilderStrategyChain.cs" />
+    <Compile Include="IBuilderTracePolicy.cs" />
+    <Compile Include="IConfigurationChangeWatcher.cs" />
+    <Compile Include="IConfigurationNameMapper.cs" />
+    <Compile Include="IConfigurationObjectPolicy.cs" />
+    <Compile Include="IConfigurationSource.cs" />
+    <Compile Include="ICreationPolicy.cs" />
+    <Compile Include="ICustomFactory.cs" />
+    <Compile Include="ICustomProviderData.cs" />
+    <Compile Include="IDatabaseAssembler.cs" />
+    <Compile Include="IEventLogEntryFormatter.cs" />
+    <Compile Include="IExplicitInstrumentationBinder.cs" />
+    <Compile Include="IHelperAssistedCustomConfigurationData.cs" />
+    <Compile Include="IInstrumentationAttacher.cs" />
+    <Compile Include="IInstrumentationEventProvider.cs" />
+    <Compile Include="ILifetimeContainer.cs" />
+    <Compile Include="IMethodCallInfo.cs" />
+    <Compile Include="IMethodPolicy.cs" />
+    <Compile Include="IncompatibleTypesException.cs" />
+    <Compile Include="IniFileElement.cs" />
+    <Compile Include="IniFileLight.cs" />
+    <Compile Include="IniFiles.cs" />
+    <Compile Include="InjectionConstructorAttribute.cs" />
+    <Compile Include="InjectionMethodAttribute.cs" />
+    <Compile Include="InstrumentationAttacherFactory.cs" />
+    <Compile Include="InstrumentationAttachmentStrategy.cs" />
+    <Compile Include="InstrumentationBaseAttribute.cs" />
+    <Compile Include="InstrumentationConfigurationSection.cs" />
+    <Compile Include="InstrumentationConsumerAttribute.cs" />
+    <Compile Include="InstrumentationListener.cs" />
+    <Compile Include="InstrumentationListenerAttribute.cs" />
+    <Compile Include="InstrumentationProviderAttribute.cs" />
+    <Compile Include="InstrumentationStrategy.cs" />
+    <Compile Include="InvalidAttributeException.cs" />
+    <Compile Include="IObjectWithName.cs" />
+    <Compile Include="IObjectWithNameAndType.cs" />
+    <Compile Include="IOraclePackage.cs" />
+    <Compile Include="IParameter.cs" />
+    <Compile Include="IPerformanceCounterNameFormatter.cs" />
+    <Compile Include="IPropertySetterInfo.cs" />
+    <Compile Include="IPropertySetterPolicy.cs" />
+    <Compile Include="IReadableLocator.cs" />
+    <Compile Include="IReadWriteLocator.cs" />
+    <Compile Include="IReflectionCachePolicy.cs" />
+    <Compile Include="IReflectionMemberInfo.cs" />
+    <Compile Include="ISingletonPolicy.cs" />
+    <Compile Include="ITypeMappingPolicy.cs" />
+    <Compile Include="KnownTypeParameter.cs" />
+    <Compile Include="LifetimeContainer.cs" />
+    <Compile Include="LifetimeEventArgs.cs" />
+    <Compile Include="Locator.cs" />
+    <Compile Include="LocatorNameTypeFactoryBase.cs" />
+    <Compile Include="LookupParameter.cs" />
+    <Compile Include="MethodCallInfo.cs" />
+    <Compile Include="MethodExecutionStrategy.cs" />
+    <Compile Include="MethodPolicy.cs" />
+    <Compile Include="MethodReflectionStrategy.cs" />
+    <Compile Include="MMCrypto.cs" />
+    <Compile Include="MMData.cs" />
+    <Compile Include="MMDataConfig.cs" />
+    <Compile Include="MMEmail.cs" />
+    <Compile Include="MMExt.cs" />
+    <Compile Include="MMSQLStrings.cs" />
+    <Compile Include="MMWebSiteUsers.cs" />
+    <Compile Include="NamedConfigurationElement.cs" />
+    <Compile Include="NamedElementCollection.cs" />
+    <Compile Include="NameTypeConfigurationElement.cs" />
+    <Compile Include="NameTypeConfigurationElementCollection.cs" />
+    <Compile Include="NameTypeFactoryBase.cs" />
+    <Compile Include="NoBindingInstrumentationAttacher.cs" />
+    <Compile Include="NoPrefixNameFormatter.cs" />
+    <Compile Include="NotPresentBehavior.cs" />
+    <Compile Include="NullConfigurationSource.cs" />
+    <Compile Include="OracleConnectionData.cs" />
+    <Compile Include="OracleConnectionSettings.cs" />
+    <Compile Include="OracleDatabase.cs" />
+    <Compile Include="OracleDatabaseAssembler.cs" />
+    <Compile Include="OracleDataReaderWrapper.cs" />
+    <Compile Include="OraclePackageData.cs" />
+    <Compile Include="ParameterAttribute.cs" />
+    <Compile Include="ParameterCache.cs" />
+    <Compile Include="PasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordDialog.Designer.cs">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PerformanceCounterAttribute.cs" />
+    <Compile Include="PerformanceCounterInstallerBuilder.cs" />
+    <Compile Include="PerformanceCounterInstanceName.cs" />
+    <Compile Include="PerformanceCountersDefinitionAttribute.cs" />
+    <Compile Include="PolicyList.cs" />
+    <Compile Include="PolymorphicConfigurationElementCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyReflectionStrategy.cs" />
+    <Compile Include="PropertySetterInfo.cs" />
+    <Compile Include="PropertySetterPolicy.cs" />
+    <Compile Include="PropertySetterStrategy.cs" />
+    <Compile Include="ReadableLocator.cs" />
+    <Compile Include="ReadOnlyLocator.cs" />
+    <Compile Include="ReadWriteLocator.cs" />
+    <Compile Include="ReflectionCachePolicy.cs" />
+    <Compile Include="ReflectionInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReflectionInstrumentationAttacher.cs" />
+    <Compile Include="ReflectionInstrumentationBinder.cs" />
+    <Compile Include="ReflectionMemberInfo.cs" />
+    <Compile Include="ReflectionStrategy.cs" />
+    <Compile Include="SearchMode.cs" />
+    <Compile Include="SerializableConfigurationSection.cs" />
+    <Compile Include="SingletonPolicy.cs" />
+    <Compile Include="SingletonStrategy.cs" />
+    <Compile Include="SqlDatabase.cs" />
+    <Compile Include="SqlDatabaseAssembler.cs" />
+    <Compile Include="StrategyList.cs" />
+    <Compile Include="SystemConfigurationSource.cs" />
+    <Compile Include="SystemConfigurationSourceElement.cs" />
+    <Compile Include="SystemConfigurationSourceImplementation.cs" />
+    <Compile Include="TypeInstantiationAssembler.cs" />
+    <Compile Include="TypeMappingPolicy.cs" />
+    <Compile Include="TypeMappingStrategy.cs" />
+    <Compile Include="UpdateBehavior.cs" />
+    <Compile Include="ValueParameter.cs" />
+    <Compile Include="WeakRefDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConnectionDetail.resx">
+      <DependentUpon>ConnectionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordDialog.resx">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MicrosoftPublicLicense.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
