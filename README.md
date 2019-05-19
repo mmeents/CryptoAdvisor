@@ -4,7 +4,7 @@ Are API apps that allow you to trade faster, smarter.  API does not require logi
 
 Key Features are Cost Averager, Click books to set price. Buy Sell Cancel operations. 
 
-Alt-Coin Crypto Traders based upon [jjxtra Exchange Sharp Library](https://github.com/jjxtra/ExchangeSharp), up for reference only.  
+Alt-Coin Crypto Traders based upon [jjxtra Exchange Sharp Library](https://github.com/jjxtra/ExchangeSharp).  
 
 Writeups about the components and details are in the wiki.
 
