@@ -2,7 +2,9 @@
 
 Are Windows Desktop applications that allow you to trade faster, smarter.  
 
-Key Features are Cost Averager, Click books to set price. Buy Sell Cancel operations. API does not require login.   
+Key Features are Cost Averager, Click books to set price. Buy Sell Cancel operations. 
+
+API does not require login, no picking sidewalks and busses, or confirming my dynamic IP.   
 
 Refresh buttons for balance, trade histoy, Open Order listings.
 
