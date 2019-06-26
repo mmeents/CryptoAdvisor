@@ -11,17 +11,17 @@ using System.Windows.Forms;
 using C0DEC0RE;
 using ExchangeSharp;
 
-namespace BittrexTrader {
+namespace PoloTrader {
 
   public partial class Form1 : Form {
 
-    public const string sUSD = "USD";
-    public const string sLocalSep = "-";
-    string[] MarketFilter = { "USD-BTC", "USD-ETH", "USD-XMR", "USD-LTC", "USD-ADA",
-      "BTC-LTC", "BTC-STRAT", "BTC-ADA",  "BTC-RVN", 
-      "BTC-ETH", "USD-TRX", "BTC-TRX",
-      //"BTC-SOLVE", "BTC-WAVES", "BTC-ZEC", "BTC-OMG","BTC-VRC",
-      "BTC-SPND" };
+    public const string sUSD = "USDC";
+    public const string sLocalSep = "_";
+    string[] MarketFilter = { "USDC_BTC", "USDC_ETH", "USDC_XMR", "BTC_ETH",
+                              "BTC_XMR",  "BTC_STRAT", "BTC_LTC", "BTC_ATOM", "BTC_GRIN" 
+                             // "BTC_ZRX", "BTC_SC", "BTC_GRIN", "BTC_STR","BTC_MANA","BTC_EOS",
+                             // "BTC_BAT", "BTC_XRP", "BTC_DASH", "BTC_CLAM", "BTC_ETC"
+    };
 
     public Form1() {
       InitializeComponent();
@@ -31,12 +31,7 @@ namespace BittrexTrader {
     #region Form Variables and Setup
     public CXCore XCore;
     public MMCredentialStore Settings;
-    //public ExchangePoloniexAPI papi;
-    public ExchangeBittrexAPI papi;
-    public ExchangeBittrexAPI BittrexBookAPI;
-    public ExchangeBittrexAPI BittrexTradeAPI;
-    public ExchangeBittrexAPI BittrexTickerAPI;
-
+    public ExchangePoloniexAPI papi;
     public CMarkets Markets;
     public CMarket FocusedMarket = null;    
     public CBalances Balances = null;
@@ -92,7 +87,7 @@ namespace BittrexTrader {
 
       SettingsFilePath = MMExt.MMConLocation();
       if (!Directory.Exists(SettingsFilePath)) Directory.CreateDirectory(SettingsFilePath);
-      SettingsFileName = "\\BittrexTraderSettings.ini";      
+      SettingsFileName = "\\PoloTraderSettings.ini";      
 
       if (!File.Exists(SettingsFilePath+ SettingsFileName)) { // need api keys. 
         iDisplayMode = 10;
@@ -166,52 +161,25 @@ namespace BittrexTrader {
         e.toAppLog("XCoreCmd "+Cmd.Cmd);
       }
     }
-    
-    public bool bHasTradeAPI = false;
-    public bool bHasBooksAPI = false;
+
     public void DoStartTrader() {
       string es = "0";
       try { 
         if (FocusedMarket is CMarket) {
+            DoGetTradeHistoryAsync(FocusedMarket.MarketName);
 
-          DoGetTradeHistoryAsync(FocusedMarket.MarketName);
+            es = "0";
+            string[] saMarket = { FocusedMarket.MarketName};
+            es = "1";
+            es = "7";
+            ActionOrderBookCallback = delegate (ExchangeOrderBook aEOB) { BooksLanding.Add(aEOB);     };
+            wsOrderBooks = papi.GetFullOrderBookWebSocket(ActionOrderBookCallback, 20, saMarket);
 
-          es = "0";
-          string[] saMarket = { FocusedMarket.MarketName};
-          es = "1";
-          if (!bHasBooksAPI) {
-            es = "3";
-            string kpPolo = Settings["BittrexKP"];
-            es = "4";
-            string sPub = kpPolo.ParseString(" ", 0);
-            string sPri = kpPolo.ParseString(" ", 1);
-            es = "5";
-            BittrexBookAPI = new ExchangeBittrexAPI();
-            es = "6";          
-            BittrexBookAPI.LoadAPIKeysUnsecure(sPub, sPri);
-            bHasBooksAPI = true;
-          }
-          es = "7";
-          ActionOrderBookCallback = delegate (ExchangeOrderBook aEOB) { BooksLanding.Add(aEOB);     };
-          wsOrderBooks = BittrexBookAPI.GetFullOrderBookWebSocket(ActionOrderBookCallback, 20, saMarket);
+            es = "12";
+            ActionTradeCallback = delegate (KeyValuePair<String, ExchangeTrade> r) { TradesLanding.Add(r); };
+            wsTradeFlow = papi.GetTradesWebSocket(this.ActionTradeCallback, saMarket);
 
-          if (!bHasTradeAPI) {
-            es = "8";
-            string kpPolo = Settings["BittrexKP"];
-            es = "9";
-            string sPub = kpPolo.ParseString(" ", 0);
-            string sPri = kpPolo.ParseString(" ", 1);
-            es = "10";
-            BittrexTradeAPI = new ExchangeBittrexAPI();
-            es = "11";
-            BittrexTradeAPI.LoadAPIKeysUnsecure(sPub, sPri);
-            bHasTradeAPI = true;
-          }
-          es = "12";
-          ActionTradeCallback = delegate (KeyValuePair<String, ExchangeTrade> r) { TradesLanding.Add(r); };
-          wsTradeFlow = BittrexTradeAPI.GetTradesWebSocket(this.ActionTradeCallback, saMarket);
-
-          XCore.AddCmd(new CCmd("DoGetOpenOrders"));
+            XCore.AddCmd(new CCmd("DoGetOpenOrders"));
         }
       } catch(Exception e) { 
         e.toAppLog("Start Trader "+es);
@@ -261,23 +229,11 @@ namespace BittrexTrader {
       }
     }
 
-    public bool bHasTickerAPI = false;
     public async void DoLoadMarketsAsync() {
       string es = "0";
-      if (!bHasTickerAPI) {         
-        string kpPolo = Settings["BittrexKP"];
-        es = "7";
-        string sPub = kpPolo.ParseString(" ", 0);
-        string sPri = kpPolo.ParseString(" ", 1);
-        es = "8";
-        BittrexTickerAPI = new ExchangeBittrexAPI();
-        es = "9";
-        BittrexTickerAPI.LoadAPIKeysUnsecure(sPub, sPri);
-        bHasTickerAPI = true;
-      }
       es = "10";
       string ms = "";
-      var xTask = await BittrexTickerAPI.GetTickersAsync();
+      var xTask = await papi.GetTickersAsync();
       es = "11";
       foreach (KeyValuePair<string, ExchangeTicker> x in xTask) {
         try {
@@ -304,15 +260,15 @@ namespace BittrexTrader {
         } 
       }
 
-      if (!bTickersUp) { 
-        ActionTickerCallback = delegate (IReadOnlyCollection<KeyValuePair<String, ExchangeTicker>> r) { TickersLanding.Add(r); };      
-        wsTickers = BittrexTickerAPI.GetTickersWebSocket(ActionTickerCallback, MarketFilter);
+      if (!bTickersUp) {
+        ActionTickerCallback = delegate (IReadOnlyCollection<KeyValuePair<String, ExchangeTicker>> r) { TickersLanding.Add(r); };
+        wsTickers = papi.GetTickersWebSocket(ActionTickerCallback, MarketFilter);
         bTickersUp = true;
       }
-      bHasMarkets = true;    
+      bHasMarkets = true;
     }
 
-    public void DoProcessTickers() { 
+    public void DoProcessTickers() {
       string evalTest = "0";
       if (TickersLanding.Count > 0) {
         while (TickersLanding.Count > 0) {
@@ -381,8 +337,9 @@ namespace BittrexTrader {
     }
 
     public async void DoGetBalancesAsync() { 
-      var xTask = await papi.OnGetBalancesAsync();
+      
       try {
+        var xTask = await papi.OnGetBalancesAsync();
         foreach (string sCur in xTask.Keys) {
           switch (sCur) {
             case sUSD:
@@ -522,7 +479,7 @@ namespace BittrexTrader {
             
         if (FocusedMarket.StopLongShort == "Long") {
           if (FocusedMarket.StopLong < FocusedMarket.CurrentLow - FocusedMarket.CurrentTrueRange) {
-            FocusedMarket.StopLong = FocusedMarket.CurrentLow - FocusedMarket.CurrentTrueRange;
+            FocusedMarket.StopLong =  FocusedMarket.CurrentLow - (FocusedMarket.CurrentTrueRange/2);
           }
         } else {
           if (FocusedMarket.StopShort > FocusedMarket.CurrentHigh + FocusedMarket.CurrentTrueRange) {
@@ -781,10 +738,9 @@ namespace BittrexTrader {
             sPub = textBox2.Text;
             sPri = textBox3.Text;
             es = "2";            
-            Settings["BittrexKP"] = sPub+" "+sPri;
+            Settings["PoloniexKP"] = sPub+" "+sPri;
             es = "3";
-            //papi = new ExchangePoloniexAPI();
-            papi = new ExchangeBittrexAPI();
+            papi = new ExchangePoloniexAPI();
             es = "4";
             papi.LoadAPIKeysUnsecure(sPub, sPri);
             iDisplayMode = 30;
@@ -806,12 +762,12 @@ namespace BittrexTrader {
             es = "5";
             Settings = new MMCredentialStore(textBox1.Text, SettingsFileName);
             es = "6";
-            string kpPolo = Settings["BittrexKP"];
+            string kpPolo = Settings["PoloniexKP"];
             es = "7";
             sPub = kpPolo.ParseString(" ", 0);
             sPri = kpPolo.ParseString(" ", 1);
             es = "8";            
-            papi = new ExchangeBittrexAPI();
+            papi = new ExchangePoloniexAPI();
             es = "9";
             papi.LoadAPIKeysUnsecure(sPub, sPri);            
             iDisplayMode = 30;
@@ -828,20 +784,18 @@ namespace BittrexTrader {
       }
     }
     private void LoadControls() { 
-      if ((Settings is MMCredentialStore)&&(Settings["BuyPrice"] != "")) {
+      if (Settings["BuyPrice"] != "") {
         edQuantityBuy.Value = Settings["QuantityBuy"].toDouble().toDecimal();
         edQuantitySell.Value = Settings["QuantitySell"].toDouble().toDecimal();
         edPriceBuy.Value = Settings["PriceBuy"].toDouble().toDecimal();
         edPriceSell.Value = Settings["PriceSell"].toDouble().toDecimal();
       }      
     }
-    private void SaveControls() {
-      if (Settings is MMCredentialStore) {
-        Settings["QuantityBuy"] = edQuantityBuy.Value.toStr8();
-        Settings["QuantitySell"] = edQuantitySell.Value.toStr8();
-        Settings["PriceBuy"] = edPriceBuy.Value.toStr8();
-        Settings["PriceSell"] = edPriceSell.Value.toStr8();
-      }
+    private void SaveControls() {      
+      Settings["QuantityBuy"] = edQuantityBuy.Value.toStr8();
+      Settings["QuantitySell"] = edQuantitySell.Value.toStr8(); 
+      Settings["PriceBuy"] = edPriceBuy.Value.toStr8();
+      Settings["PriceSell"]= edPriceSell.Value.toStr8();
     }
 
     private void btnReloadBalances_Click(object sender, EventArgs e) {
@@ -1077,8 +1031,6 @@ namespace BittrexTrader {
             if (!btnReloadOrderHistory.Visible) btnReloadOrderHistory.Visible = true;
 
           }
-
-
         }  
       }
     }
@@ -1435,16 +1387,16 @@ namespace BittrexTrader {
 
                       if (bFTT) {
                         es = "5";
-                        dSumQVol = xT.Amount.toDouble();
+                        dSumQVol = xT.Price.toDouble();
                         dSumBVol = (xT.Amount * xT.Price).toDouble();
-                        dPrice = xT.Price.toDouble();
+                        dPrice = xT.Amount.toDouble();
                         slTime = xT.Timestamp.toStrTime(); es = "15";
-                        slPrice = xT.Price.toStr8();
+                        slPrice = xT.Amount.toStr8();
                         slType = sCType;
                         bFTT = false;
                       } else {
                         es = "6";
-                        if ((slTime == xT.Timestamp.toStrTime()) && (slPrice == xT.Price.toStr8()) && (slType == sCType)) {
+                        if ((slTime == xT.Timestamp.toStrTime()) && (slPrice == xT.Amount.toStr8()) && (slType == sCType)) {
                           es = "7";
                           dSumQVol += xT.Amount.toDouble();
                           dSumBVol += (xT.Amount * xT.Price).toDouble();
@@ -1455,7 +1407,7 @@ namespace BittrexTrader {
                           es = "9";                      
                           string sMarket = FocusedMarket.MarketName;
                           string s = " " + xT.Timestamp.toStrTime() +" "+ sCType +
-                            " " + xT.Price.toSat() + " " + sMarket.ParseString("-_", 0) +  // Vol quote actual                 
+                            " " + xT.Amount.toStr8() + " " + sMarket.ParseString("-_", 0) +  // Vol quote actual                 
                             " " + dSumQVol.toStr8P(15) + " " + sMarket.ParseString("-_", 1) +  // price actual                    
                             " " + dSumBVol.toStr8P(11) + " " + sMarket.ParseString("-_", 0);
                           es = "10"; // total
@@ -1517,7 +1469,7 @@ namespace BittrexTrader {
                       es = "17";
                       string sMarket = FocusedMarket.MarketName;
                       string s = " " + sCType+
-                        " " + xT.Price.toSat() + " SAT " + sMarket.ParseString("-_", 0) +  // Vol quote actual                 
+                        " " + xT.Price.toSat() + " " + sMarket.ParseString("-_", 0) +  // Vol quote actual                 
                         " " + dSumQVol.toStr8P(15) + " " + sMarket.ParseString("-_", 1) +  // price actual                    
                         " " + dSumBVol.toStr8P(11) + " " + sMarket.ParseString("-_", 0);
                       es = "18"; // total
@@ -1587,7 +1539,7 @@ namespace BittrexTrader {
                       es = "17";
                       string sMarket = FocusedMarket.MarketName;
                       string s = " " + xT.OrderDate.toStrTime() + sCType +
-                        " " + xT.Price.toSat() + " SAT" + //sMarket.ParseString("-_", 0) +  // Vol quote actual                 
+                        " " + dPrice.toSat() + " " + sMarket.ParseString("-_", 0) +  // Vol quote actual                 
                         " " + dSumQVol.toStr8P(15) + " " + sMarket.ParseString("-_", 1) +  // price actual                    
                         " " + dSumBVol.toStr8P(11) + " " + sMarket.ParseString("-_", 0);
                       es = "18"; // total

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BittrexTrader")]
+[assembly: AssemblyTitle("PoloniexTrader")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sky High Studio")]
-[assembly: AssemblyProduct("BittrexTrader")]
+[assembly: AssemblyProduct("PoloTrader")]
 [assembly: AssemblyCopyright("Copyright © Mattei 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

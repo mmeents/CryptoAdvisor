@@ -18,8 +18,7 @@ namespace ExchangeSharp
     using System.IO;
     using System.Linq;
     using System.Net;
-    using System.Threading.Tasks;
-    //using Balance = ExchangeSharp.API.Exchanges.Poloniex.Balance;
+    using System.Threading.Tasks; 
 
     using Newtonsoft.Json;
   // sealed 
@@ -816,11 +815,7 @@ namespace ExchangeSharp
             return orders[0];
         }
 
-    public void GetTickersWebSocket() {
-      throw new NotImplementedException();
-    }
-
-    protected override async Task<IEnumerable<ExchangeOrderResult>> OnGetCompletedOrderDetailsAsync(string marketSymbol = null, DateTime? afterDate = null)
+        protected override async Task<IEnumerable<ExchangeOrderResult>> OnGetCompletedOrderDetailsAsync(string marketSymbol = null, DateTime? afterDate = null)
         {
             marketSymbol = string.IsNullOrWhiteSpace(marketSymbol) ? "all" : NormalizeMarketSymbol(marketSymbol);
 

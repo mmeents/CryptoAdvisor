@@ -9,107 +9,108 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExchangeSharp;
 
+
 using C0DEC0RE;
 
-namespace BittrexTrader {
+namespace PoloTrader {
   
   #region static includes 
-    public static class appExt {
-    public static Exception toAppLog(this Exception e, string sLocation) {
-      try {
-        string ToFile = MMExt.AppExeFolder() + "ProtoAlphaException" + DateTime.Now.toStrDate().Trim() + ".log";
-        (DateTime.Now.toStrDateTime() + ":" + sLocation + ":" + e.toWalkExcTreePath()).toTextFileLine(ToFile);
-      } catch { }
-      return e;
-    }
-    public static void toAppLog(this string sLine) {
-      try {
-        string ToFile = MMExt.AppExeFolder() + "AppLog" + DateTime.Now.toStrDate().Trim() + ".log";
-        (DateTime.Now.toStrDateTime() + ":" + sLine).toTextFileLine(ToFile);
-      } catch { }
-    }
-    public static string toSat(this double aValue) { return (aValue * 100000000).toInt32T().toString();}
-    public static string toSat(this decimal aValue) { return (aValue * 100000000).toInt32T().toString(); }
-
-    public static string TradeHistoryFileName(this string cp) {
-      string sFolder = MMExt.AppExeFolder() + "Logs";
-      if (!Directory.Exists(sFolder)) { Directory.CreateDirectory(sFolder); }
-      return sFolder + "\\TH" + cp + ".txt";
-    }
-    public static string toTradeHistoyFile(this string sMsg, string sMarket) {
-      using (StreamWriter w = File.AppendText(sMarket.TradeHistoryFileName())) { w.WriteLine(sMsg); }
-      return sMsg;
-    }
-    public static string toDataLine(this ExchangeOrderResult tTrade) { 
-      string sRet = tTrade.OrderId+","+        
-        tTrade.MarketSymbol + "," +
-       (tTrade.IsBuy ? "Buy" : "Sell") + "," +
-        tTrade.Price.toStr8() + "," +
-        tTrade.AmountFilled.toStr8() +"," +        
-        tTrade.Fees.toStr8() + "," +
-        tTrade.FeesCurrency + "," +
-        tTrade.OrderDate.toStrDateTime() + "," +        
-        ((tTrade.Price * tTrade.AmountFilled)+(tTrade.IsBuy?tTrade.Fees:-1*tTrade.Fees)).toStr8() + "," +   // btc total extra 
-      // tTrade.FillDate.toStrDateTime() + "," +
-        tTrade.Result + "," +
-      // tTrade.Amount.toStr8() + "," + 
-      // tTrade.TradeId + "," +                
-        tTrade.Message;
-      return sRet;
-    }
-    public static ExchangeOrderResult TryParse(this string sDataLine) {
-      ExchangeOrderResult ar = null;
-      try { 
-        string sOrderId = sDataLine.ParseString(",", 0);
-        string sMarket = sDataLine.ParseString(",", 1);
-        string sIsBuy = sDataLine.ParseString(",", 2);
-        string sPrice = sDataLine.ParseString(",", 3);
-        string sAmountFilled = sDataLine.ParseString(",", 4);
-        string sFee = sDataLine.ParseString(",", 5);
-        string sFeesCurrency = sDataLine.ParseString(",", 6);
-        string sOrderDate = sDataLine.ParseString(",", 7);
-        string sResult = sDataLine.ParseString(",", 9);
-        string sMessage = sDataLine.ParseString(",", 10);
-
-        ar = new ExchangeOrderResult();
-        ar.OrderId = sOrderId;
-        ar.MarketSymbol = sMarket;
-        ar.IsBuy = (sIsBuy == "Buy");
-        ar.Price = sPrice.toDouble().toDecimal();
-        ar.AmountFilled = sAmountFilled.toDouble().toDecimal();
-        ar.Fees = sFee.toDouble().toDecimal();
-        ar.FeesCurrency = sFeesCurrency;
-        ar.OrderDate = sOrderDate.toDateTime();
-        Enum.TryParse<ExchangeAPIOrderResult>(sResult, out ExchangeAPIOrderResult aResult);
-        ar.Result = aResult;
-        ar.Message = sMessage;      
-      } catch (Exception ee) { 
-        ee.toAppLog("ExchangeOrderResultTryParse");      
+    public static class appExt {        
+      public static Exception toAppLog(this Exception e, string sLocation) {
+        try {
+          string ToFile = MMExt.AppExeFolder() + "ProtoAlphaException" + DateTime.Now.toStrDate().Trim() + ".log";
+          (DateTime.Now.toStrDateTime() + ":" + sLocation + ":" + e.toWalkExcTreePath()).toTextFileLine(ToFile);
+        } catch { }
+        return e;
       }
-      return ar;
-    }
+      public static void toAppLog(this string sLine) {
+        try {
+          string ToFile = MMExt.AppExeFolder() + "AppLog" + DateTime.Now.toStrDate().Trim() + ".log";
+          (DateTime.Now.toStrDateTime() + ":" + sLine).toTextFileLine(ToFile);
+        } catch { }
+      }
+      public static string toSat(this double aValue) { return (aValue * 100000000).toInt32T().toString();}
+      public static string toSat(this decimal aValue) { return (aValue * 100000000).toInt32T().toString(); }
 
-    public static string toProcessHistoryFile(this CProcess aProc) { 
-      string sLine = aProc.toDataLine();
-      using (StreamWriter w = File.AppendText(appExt.ProcessHistoryFileName())) { w.WriteLine(sLine); }
-      return sLine;
-    }
-    public static string toDataLine(this CProcess aProc) {
-      string x =  aProc.Id.toString() +","+  aProc.Cmd.Cmd; 
-      foreach(string s in aProc.Cmd.Keys) { 
-        x = x + ","+ s + ":"+ aProc.Cmd[s].toString();
+      public static string TradeHistoryFileName(this string cp) {
+        string sFolder = MMExt.AppExeFolder() + "Logs";
+        if (!Directory.Exists(sFolder)) { Directory.CreateDirectory(sFolder); }
+        return sFolder + "\\TH" + cp + ".txt";
       }
-      if (aProc.InvokeBalances) { 
-        x = x + ",InvokeBalances:true";
+      public static string toTradeHistoyFile(this string sMsg, string sMarket) {
+        using (StreamWriter w = File.AppendText(sMarket.TradeHistoryFileName())) { w.WriteLine(sMsg); }
+        return sMsg;
       }
-      return x;
+      public static string toDataLine(this ExchangeOrderResult tTrade) { 
+        string sRet = tTrade.OrderId+","+        
+          tTrade.MarketSymbol + "," +
+         (tTrade.IsBuy ? "Buy" : "Sell") + "," +
+          tTrade.Price.toStr8() + "," +
+          tTrade.AmountFilled.toStr8() +"," +        
+          tTrade.Fees.toStr8() + "," +
+          tTrade.FeesCurrency + "," +
+          tTrade.OrderDate.toStrDateTime() + "," +        
+          ((tTrade.Price * tTrade.AmountFilled)+(tTrade.IsBuy?tTrade.Fees:-1*tTrade.Fees)).toStr8() + "," +   // btc total extra 
+        // tTrade.FillDate.toStrDateTime() + "," +
+          tTrade.Result + "," +
+        // tTrade.Amount.toStr8() + "," + 
+        // tTrade.TradeId + "," +                
+          tTrade.Message;
+        return sRet;
+      }
+      public static ExchangeOrderResult TryParse(this string sDataLine) {
+        ExchangeOrderResult ar = null;
+        try { 
+          string sOrderId = sDataLine.ParseString(",", 0);
+          string sMarket = sDataLine.ParseString(",", 1);
+          string sIsBuy = sDataLine.ParseString(",", 2);
+          string sPrice = sDataLine.ParseString(",", 3);
+          string sAmountFilled = sDataLine.ParseString(",", 4);
+          string sFee = sDataLine.ParseString(",", 5);
+          string sFeesCurrency = sDataLine.ParseString(",", 6);
+          string sOrderDate = sDataLine.ParseString(",", 7);
+          string sResult = sDataLine.ParseString(",", 9);
+          string sMessage = sDataLine.ParseString(",", 10);
+
+          ar = new ExchangeOrderResult();
+          ar.OrderId = sOrderId;
+          ar.MarketSymbol = sMarket;
+          ar.IsBuy = (sIsBuy == "Buy");
+          ar.Price = sPrice.toDouble().toDecimal();
+          ar.AmountFilled = sAmountFilled.toDouble().toDecimal();
+          ar.Fees = sFee.toDouble().toDecimal();
+          ar.FeesCurrency = sFeesCurrency;
+          ar.OrderDate = sOrderDate.toDateTime();
+          Enum.TryParse<ExchangeAPIOrderResult>(sResult, out ExchangeAPIOrderResult aResult);
+          ar.Result = aResult;
+          ar.Message = sMessage;      
+        } catch (Exception ee) { 
+          ee.toAppLog("ExchangeOrderResultTryParse");      
+        }
+        return ar;
+      }
+
+      public static string toProcessHistoryFile(this CProcess aProc) { 
+        string sLine = aProc.toDataLine();
+        using (StreamWriter w = File.AppendText(appExt.ProcessHistoryFileName())) { w.WriteLine(sLine); }
+        return sLine;
+      }
+      public static string toDataLine(this CProcess aProc) {
+        string x =  aProc.Id.toString() +","+  aProc.Cmd.Cmd; 
+        foreach(string s in aProc.Cmd.Keys) { 
+          x = x + ","+ s + ":"+ aProc.Cmd[s].toString();
+        }
+        if (aProc.InvokeBalances) { 
+          x = x + ",InvokeBalances:true";
+        }
+        return x;
+      }
+      public static string ProcessHistoryFileName() {
+        string sFolder = MMExt.AppExeFolder() + "Logs";
+        if (!Directory.Exists(sFolder)) { Directory.CreateDirectory(sFolder); }
+        return sFolder + "\\PL" +  DateTime.Now.toStrDate().Trim() + ".txt";      
+      }
     }
-    public static string ProcessHistoryFileName() {
-      string sFolder = MMExt.AppExeFolder() + "Logs";
-      if (!Directory.Exists(sFolder)) { Directory.CreateDirectory(sFolder); }
-      return sFolder + "\\PL" +  DateTime.Now.toStrDate().Trim() + ".txt";      
-    }
-  }
   #endregion
 
   #region CObject C is 
@@ -217,6 +218,11 @@ namespace BittrexTrader {
       if (Contains(aKey)) {
         base.TryRemove(aKey, out object outcast);
       }
+    }
+  }
+
+  public class CLog : ConcurrentDictionary<DateTime, object> {
+    public CLog() : base() {
     }
   }
 
@@ -632,7 +638,9 @@ namespace BittrexTrader {
     }
 
     
-    public decimal CurrentTrueRange { get { return PriceLast * 0.006969m; } }
+    public decimal CurrentTrueRange { get {      
+        return PriceLast * 0.008669m;
+      } }
     public decimal LongStopRange { get { return base["LongStopRange"].toDouble().toDecimal(); } set { base["LongStopRange"] = value; } }
     public decimal ShortStopRange { get { return base["ShortStopRange"].toDouble().toDecimal(); } set { base["ShortStopRange"] = value; } }
 
@@ -755,6 +763,7 @@ namespace BittrexTrader {
             if ((StopLongShort == "Long") && (Bid - CurrentTrueRange > StopLong)) {
               StopLong = Bid - CurrentTrueRange;
             }
+
             if ((StopLongShort == "Short") && (Ask > StopShort)) {
               StopChanged = true;
               StopLongShort = "Long";
@@ -808,8 +817,8 @@ namespace BittrexTrader {
     public class BaseRate {
       CBalances Owner;
       public BaseRate(CBalances aOwner) { Owner = aOwner; }
-      public double USDBTCRate { get { 
-          CMarket x = Owner.Owner.Markets["USD-BTC"];
+      public double USDBTCRate { get {
+            CMarket x = Owner.Owner.Markets["USDC_BTC"];
           return (x is CMarket ? x.PriceLast.toDouble():4200); } }      
       public double toUSD(double aBTC) { return aBTC * USDBTCRate; }      
     }
@@ -829,7 +838,7 @@ namespace BittrexTrader {
         QuoteAvailable = aBalance.QuoteAvailable;
         QuoteOnOrders = aBalance.QuoteOnOrders;
         DBQuote = aBalance.QuoteAvailable;
-        if ((Currency == "USD") && (QuoteAvailable > 0)) {
+        if ((Currency == "USDC") && (QuoteAvailable > 0)) {
         //  BitcoinValue = aBalance.QuoteAvailable / ((Owner.aBR.USDCBTCRate != 0) ? Owner.aBR.USDCBTCRate : 2500);
           QuoteAvailable = aBalance.QuoteAvailable;
           QuoteOnOrders = aBalance.QuoteOnOrders;
@@ -856,7 +865,7 @@ namespace BittrexTrader {
         this[sCurrency] = new CBalances.CBalance(this, sCurrency, ReportedBalance);
       } else {
         CBalances.CBalance wb = (CBalances.CBalance)this[sCurrency];
-        if ((sCurrency == "USD") && (ReportedBalance.QuoteAvailable > 0)) {
+        if ((sCurrency == "USDC") && (ReportedBalance.QuoteAvailable > 0)) {
           wb.BitcoinValue = 0; // ReportedBalance.QuoteAvailable / ((aBR.USDCBTCRate != 0) ? aBR.USDCBTCRate : 5000);
           wb.QuoteAvailable = ReportedBalance.QuoteAvailable;
           wb.QuoteOnOrders = ReportedBalance.QuoteOnOrders;
@@ -883,7 +892,7 @@ namespace BittrexTrader {
         } else if (skey == "USD") {
           this[skey].BitcoinValue = this[skey].DBQuote / ((aBR.USDBTCRate != 0) ? aBR.USDBTCRate : 5000);          
         } else {
-          sMarket = "BTC-"+skey;
+          sMarket = "BTC_"+skey;
           CMarket aM = Owner.Markets[sMarket];
           if (aM is CMarket) { 
             this[skey].BitcoinValue = this[skey].DBQuote * aM.Bid.toDouble();          
@@ -959,7 +968,7 @@ namespace BittrexTrader {
           ShardSum = ShardSum + eor.AmountFilled.toDouble();
         } else {
           if (ShardSum >= QuoteVolToFind) { break;}
-          decimal aPrice = eor.Price;          
+          decimal aPrice = eor.Price;
           decimal aVol = (QuoteVolToFind.toDecimal() - ShardSum.toDecimal() + 0.00000001m) ;
           decimal aFee = eor.Fees * aVol/eor.AmountFilled;           
           this[aPrice] = new Shard(this, aPrice, aVol, aFee);

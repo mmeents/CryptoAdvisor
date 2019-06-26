@@ -1,4 +1,4 @@
-﻿namespace BittrexTrader {
+﻿namespace PoloTrader {
   partial class Form1 {
     /// <summary>
     /// Required designer variable.
@@ -437,7 +437,7 @@
       this.Controls.Add(this.edTotalBuy);
       this.KeyPreview = true;
       this.Name = "Form1";
-      this.Text = "B i t t r e x  T r a d e r   ";
+      this.Text = "P O L O N I E X   T r a d e r   ";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
       this.Shown += new System.EventHandler(this.Form1_Shown);
       this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
