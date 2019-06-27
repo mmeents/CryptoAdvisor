@@ -447,6 +447,13 @@ namespace BittrexTrader {
 
   #region Markets
 
+  public class CTextLog : CCache {
+    public CTextLog() : base() { }
+    public void Add(String s) {
+      base.Add( DateTime.Now.toStrTime()+":"+ s);
+    }
+  }
+
   public class CTickerCache : CCache { 
     public CTickerCache() : base() { 
     }

@@ -221,11 +221,6 @@ namespace PoloTrader {
     }
   }
 
-  public class CLog : ConcurrentDictionary<DateTime, object> {
-    public CLog() : base() {
-    }
-  }
-
   public class CAvgDecimalCache : CCache {
     public CAvgDecimalCache() : base() { }
     public object Add(decimal aObj) {
@@ -453,6 +448,13 @@ namespace PoloTrader {
 
   #region Markets
 
+  public class CTextLog : CCache {
+    public CTextLog() : base() { }
+    public void Add(String s) {
+      base.Add( DateTime.Now.toStrTime()+":"+ s);
+    }
+  }
+
   public class CTickerCache : CCache { 
     public CTickerCache() : base() { 
     }
@@ -638,9 +640,7 @@ namespace PoloTrader {
     }
 
     
-    public decimal CurrentTrueRange { get {      
-        return PriceLast * 0.008669m;
-      } }
+    public decimal CurrentTrueRange { get { return PriceLast * 0.006969m; } }
     public decimal LongStopRange { get { return base["LongStopRange"].toDouble().toDecimal(); } set { base["LongStopRange"] = value; } }
     public decimal ShortStopRange { get { return base["ShortStopRange"].toDouble().toDecimal(); } set { base["ShortStopRange"] = value; } }
 

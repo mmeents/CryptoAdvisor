@@ -38,6 +38,7 @@ namespace PoloTrader {
     public CTickerQueue TickersLanding;
     public CTradesQueue TradesLanding;
     public CBooksQueue BooksLanding;
+    public CTextLog History;
 
     public IWebSocket wsTickers;
     public IWebSocket wsTradeFlow;    
@@ -74,6 +75,7 @@ namespace PoloTrader {
       TickersLanding = new CTickerQueue();
       TradesLanding = new CTradesQueue();
       BooksLanding = new CBooksQueue();
+      History = new CTextLog();
 
       sWaitDesc = "";
       fLogo17 = new Font("Calisto MT", 17); fLogo20 = new Font("Calisto MT", 20, FontStyle.Bold);
@@ -193,6 +195,7 @@ namespace PoloTrader {
       if (wsOrderBooks is IWebSocket) {
         wsOrderBooks.Dispose();
       }
+      History.Add("Trader Stopped.");
     }
 
     public void TakeDownSockets() {
@@ -206,7 +209,7 @@ namespace PoloTrader {
         if (wsOrderBooks is IWebSocket) {
           wsOrderBooks.Dispose();
         }
-
+        History.Add("Listeners Deaf.");
 
       } catch (Exception e) {
         e.toAppLog("TakeDownSockets");
@@ -231,6 +234,7 @@ namespace PoloTrader {
 
     public async void DoLoadMarketsAsync() {
       string es = "0";
+      History.Add("Loading Markets");
       es = "10";
       string ms = "";
       var xTask = await papi.GetTickersAsync();
@@ -260,6 +264,7 @@ namespace PoloTrader {
         } 
       }
 
+      History.Add("Listen Tickers");
       if (!bTickersUp) {
         ActionTickerCallback = delegate (IReadOnlyCollection<KeyValuePair<String, ExchangeTicker>> r) { TickersLanding.Add(r); };
         wsTickers = papi.GetTickersWebSocket(ActionTickerCallback, MarketFilter);
@@ -337,7 +342,7 @@ namespace PoloTrader {
     }
 
     public async void DoGetBalancesAsync() { 
-      
+      History.Add("Checking Balances");
       try {
         var xTask = await papi.OnGetBalancesAsync();
         foreach (string sCur in xTask.Keys) {
@@ -370,6 +375,7 @@ namespace PoloTrader {
 
         Balances.RecomputeBases();
 
+        History.Add("Balances Checked.");
 
       } catch (Exception e) {
         e.toAppLog("DoGetBalance");
@@ -381,6 +387,7 @@ namespace PoloTrader {
       CMarket aMarket = Markets[sMarket];
       if (aMarket is CMarket) {  
         try { 
+          History.Add("Checking Trades");
           IEnumerable<ExchangeOrderResult> lEOR = await papi.GetCompletedOrderDetailsAsync( sMarket);        
           aMarket.TradeHisory.Changed = false;
           foreach(ExchangeOrderResult x in lEOR) {
@@ -390,6 +397,7 @@ namespace PoloTrader {
             aMarket.ShitChanged();
             DGTHFTT = true;
           }        
+          History.Add("Trades Checked.");
         } catch (Exception e) { 
           e.toAppLog("DoGetTradeHist");
         }
@@ -399,6 +407,7 @@ namespace PoloTrader {
     public async void DoGetOpenOrdersAsync() { 
       if (FocusedMarket is CMarket) {
         try {
+          History.Add("Checking Orders");
           IEnumerable<ExchangeOrderResult> lEOR = await papi.GetOpenOrderDetailsAsync(FocusedMarket.MarketName);
           foreach (ExchangeOrderResult x in lEOR) {
             if (!FocusedMarket.OpenOrders.Contains(x.OrderId)) {
@@ -414,6 +423,7 @@ namespace PoloTrader {
               FocusedMarket.OpenOrders.Remove(sKey);
             }
           }
+          History.Add("Orders Checked");
         } catch (Exception e) {
           e.toAppLog("ONGetOpenOrders");
         }
@@ -427,9 +437,11 @@ namespace PoloTrader {
       aOrder.IsBuy = (bool)aCmd["IsBuy"];      
       aOrder.Amount = (decimal)aCmd["Amount"];
       aOrder.Price = (decimal)aCmd["Price"];
+      History.Add("Placing Order");
       try { 
         ExchangeOrderResult aResult = await papi.PlaceOrderAsync( aOrder );
       } catch(Exception e) { 
+        History.Add("Order Error:"+ e.Message);
         e.toAppLog("DoPlaceOrder");
       }
 
@@ -441,6 +453,7 @@ namespace PoloTrader {
     public async void DoCancelOrderAsync(string aOrderId) { 
       if (FocusedMarket.OpenOrders.Contains(aOrderId)) {
         try { 
+          History.Add("Canceling Order");
         await papi.CancelOrderAsync(aOrderId);
         } catch (Exception e) {  
           e.toAppLog("CancelOrder");
@@ -449,6 +462,7 @@ namespace PoloTrader {
         aCmd["InvokeBalances"] = true;
         XCore.AddCmd(aCmd);        
         XCore.AddCmd(new CCmd("DoGetCompletedTrades"));
+        History.Add("Order Canceled.");
       }
     }
 
@@ -941,6 +955,11 @@ namespace PoloTrader {
             if (btnReloadOrderHistory.Visible) btnReloadOrderHistory.Visible = false;
 
             if (edLongShort.Visible) edLongShort.Visible = false;
+
+            if ((sOrderToCancel == "") || ((FocusedMarket is CMarket)&&(FocusedMarket.OpenOrders.Count ==0))) {
+              btnCancel.Visible = false;
+            }
+            
           }
 
           if (iDisplayMode == 40) {
@@ -1315,6 +1334,7 @@ namespace PoloTrader {
               #endregion
 
               #region User Shard Listings
+
               iLeft = Convert.ToInt32(5);
               iTop = Convert.ToInt32(f05Height);
               iWidth = Convert.ToInt32(3 * f05Width);
@@ -1345,6 +1365,20 @@ namespace PoloTrader {
                 fCur8, Brushes.White, Convert.ToSingle(iLeft), Convert.ToSingle(iTop+sfText.Height));
               bg.Graphics.DrawString("" + dAvgSatPrice.toStr2() + " + "+ dAvgPriceFee.toStr2() + " = " + dAvePriceAndFee.toInt32T().toString() + " sat",
                 fCur8, Brushes.White, Convert.ToSingle(iLeft), Convert.ToSingle(iTop + 2 * sfText.Height));
+
+
+              IEnumerable<KeyValuePair<long, object>> lQSh = History.OrderByDescending(x => x.Key);
+              iSellNo = iSellNo + 3;
+              foreach (KeyValuePair<long, object> kvp in lQSh) {
+                string ls = (string)kvp.Value;                
+                string sOut = "" + ls;
+                bg.Graphics.DrawString(sOut,
+                  fCur8, Brushes.WhiteSmoke, Convert.ToSingle(iLeft), Convert.ToSingle(iTop + 4 * sfText.Height + (iSellNo * sfText.Height)));
+                iSellNo++;
+              }
+
+
+
 
               #endregion
 
