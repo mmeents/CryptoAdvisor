@@ -1,8 +1,12 @@
 # Crypto Traders
 
-Are API apps that allow you to trade faster, smarter.  API does not require login.  
+Are Windows Desktop applications that allow you to trade faster, smarter.  
 
 Key Features are Cost Averager, Click books to set price. Buy Sell Cancel operations. 
+
+API does not require login, no picking sidewalks and busses, or confirming my dynamic IP.   
+
+Refresh buttons for balance, trade histoy, Open Order listings.
 
 Alt-Coin Crypto Traders based upon [jjxtra Exchange Sharp Library](https://github.com/jjxtra/ExchangeSharp).  
 
