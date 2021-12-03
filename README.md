@@ -1,5 +1,7 @@
 # Crypto Traders
 
+Sorry the apps are dead, jjxtra changed away from what was built and Poloniex stopped serving US customers so development halted.  Solutions left for reference purposes only.
+
 Are Windows Desktop applications that allow you to trade faster, smarter.  
 
 Key Features are Cost Averager, Click books to set price. Buy Sell Cancel operations. 
